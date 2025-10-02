@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class CalculatorController {
+    @FXML
     public TextField firstTextField;
     public ChoiceBox operationChoiceBox;
     public TextField secondTextField;
