@@ -1,0 +1,73 @@
+package com.example.calculator;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
+
+public class CalculatorController implements Initializable {
+    @FXML public TextField firstTextField;
+    @FXML public ChoiceBox<String> operationChoiceBox;
+    @FXML public TextField secondTextField;
+    @FXML public Label resultLabel;
+    @FXML
+    private Label welcomeText;
+
+    @FXML
+    protected void onHelloButtonClick() {
+        welcomeText.setText("Welcome to JavaFX CalculatorApplication!");
+    }
+
+    private void debugger(){
+        int i = 0;
+    }
+
+    public void handleCalculate(ActionEvent actionEvent) {
+        double a = Double.parseDouble(firstTextField.getText());
+        double b = Double.parseDouble(secondTextField.getText());
+        String operation = operationChoiceBox.getValue();
+        debugger();
+        char operationChar = operation.charAt(0);
+        double c = 0.0;
+        switch (operationChar){
+            case '+': {
+                c = a + b;
+                break;
+            }
+            case '-': {
+                c = a - b;
+                break;
+            }
+            case '*': {
+                c = a * b;
+                break;
+            }
+            case '/': {
+                c = a / b;
+                break;
+            }
+        }
+        resultLabel.setText("= " + c);
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        List<String> operations = new ArrayList<>();
+        operations.add("+");
+        operations.add("-");
+        operations.add("*");
+        operations.add("/");
+        ObservableList<String> oListOfOperations = FXCollections.observableList(operations);
+        operationChoiceBox.setItems(oListOfOperations);
+        operationChoiceBox.setValue("+");
+    }
+}
