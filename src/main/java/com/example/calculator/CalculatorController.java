@@ -7,11 +7,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class CalculatorController {
-    @FXML
-    public TextField firstTextField;
-    public ChoiceBox operationChoiceBox;
-    public TextField secondTextField;
-    public Label resultLabel;
+    @FXML public TextField firstTextField;
+    @FXML public ChoiceBox<String> operationChoiceBox;
+    @FXML public TextField secondTextField;
+    @FXML public Label resultLabel;
     @FXML
     private Label welcomeText;
 
